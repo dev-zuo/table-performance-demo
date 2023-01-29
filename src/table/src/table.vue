@@ -26,6 +26,7 @@
     :data-prefix="ns.namespace.value"
     @mouseleave="handleMouseLeave()"
   >
+    <p style="color: red">来自 table 源码</p>
     <div :class="ns.e('inner-wrapper')" :style="tableInnerStyle">
       <div ref="hiddenColumns" class="hidden-columns">
         <slot />

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { getCurrentInstance, ref, toRefs, unref, watch } from "vue";
+import { getCurrentInstance, ref, toRefs, unref, watch, shallowRef } from "vue";
 import { hasOwn } from "element-plus/es/utils/index";
 import {
   getColumnById,
@@ -49,12 +49,12 @@ function useWatcher<T>() {
   const instance = getCurrentInstance() as Table<T>;
   const { size: tableSize } = toRefs(instance.proxy?.$props as any);
   const rowKey: Ref<string> = ref(null);
-  const data: Ref<T[]> = ref([]);
-  const _data: Ref<T[]> = ref([]);
+  const data: Ref<T[]> = shallowRef([]);
+  const _data: Ref<T[]> = shallowRef([]);
   const isComplex = ref(false);
-  const _columns: Ref<TableColumnCtx<T>[]> = ref([]);
+  const _columns: Ref<TableColumnCtx<T>[]> = shallowRef([]);
   const originColumns: Ref<TableColumnCtx<T>[]> = ref([]);
-  const columns: Ref<TableColumnCtx<T>[]> = ref([]);
+  const columns: Ref<TableColumnCtx<T>[]> = shallowRef([]);
   const fixedColumns: Ref<TableColumnCtx<T>[]> = ref([]);
   const rightFixedColumns: Ref<TableColumnCtx<T>[]> = ref([]);
   const leafColumns: Ref<TableColumnCtx<T>[]> = ref([]);
