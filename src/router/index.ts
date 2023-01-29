@@ -8,6 +8,11 @@ const router = createRouter({
       name: "home",
       component: () => import("../views/TableFrame.vue"),
     },
+    {
+      path: "/new",
+      name: "localTable",
+      component: () => import("../views/LocalEditTableFrame.vue"),
+    },
   ],
 });
 
