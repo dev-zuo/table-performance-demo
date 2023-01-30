@@ -62,6 +62,10 @@ function useRender<T>(props: Partial<TableBodyProps<T>>) {
       : {
           display: "none",
         };
+
+    const optimizeColumns = columns.value.map((item) => {
+      return { realWidth: item.realWidth, width: item.width };
+    });
     return h(
       "tr",
       {
@@ -81,7 +85,7 @@ function useRender<T>(props: Partial<TableBodyProps<T>>) {
         }
         const columnData = { ...column };
         columnData.realWidth = getColspanRealWidth(
-          columns.value,
+          optimizeColumns,
           colspan,
           cellIndex
         );
