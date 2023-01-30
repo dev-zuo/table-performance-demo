@@ -23,10 +23,21 @@
         :label="item.label"
       >
         <template #default="scope">
-          <el-tooltip
-            placement="top-start"
-            :disabled="!(item.prop === 'column1' && scope.row[item.prop])"
-          >
+          <!-- 
+            <el-tooltip
+              placement="top-start"
+              :disabled="!(item.prop === 'column1' && scope.row[item.prop])"
+            >
+              <template #content>
+                <span>{{ "tooltip显示" + scope.row[item.prop] }}</span>
+              </template>
+              <span>{{ scope.row[item.prop] }}</span>
+            </el-tooltip>
+          -->
+          <span v-if="!(item.prop === 'column1' && scope.row[item.prop])">
+            {{ scope.row[item.prop] }}
+          </span>
+          <el-tooltip v-else placement="top-start">
             <template #content>
               <span>{{ "tooltip显示" + scope.row[item.prop] }}</span>
             </template>
